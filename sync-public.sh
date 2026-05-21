@@ -24,9 +24,17 @@ TOKEN=$(cat "$TOKEN_FILE" | tr -d '\n')
 echo "[sync-public] $TODAY"
 
 # 1. 复制文件到公共仓库目录
-cp "$ALED_OUT/public/"*.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
+# 英文看板
+cp "$ALED_OUT/public/"*_scoreboard.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
+# 中文看板（复制到 cn/ 子目录）
+mkdir -p "$PUBLIC_REPO_DIR/daily/cn/"
+cp "$ALED_OUT/public/"*_看板.md "$PUBLIC_REPO_DIR/daily/cn/" 2>/dev/null
+# 验证报告
 cp "$VER_OUT/public/"*.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
+# 英文日报
 cp "$CONTENT_OUT/en/"*_daily.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
+# 中文日报
+cp "$CONTENT_OUT/cn/"*_日报.md "$PUBLIC_REPO_DIR/daily/cn/" 2>/dev/null
 
 # 2. 更新 index.md
 {
