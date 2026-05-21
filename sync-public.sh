@@ -25,7 +25,6 @@ echo "[sync-public] $TODAY"
 
 # 1. 复制文件到公共仓库目录
 cp "$ALED_OUT/public/"*.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
-cp "$ALED_OUT/en/"*_report.json "$PUBLIC_REPO_DIR/daily/en/" 2>/dev/null
 cp "$VER_OUT/public/"*.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
 cp "$CONTENT_OUT/en/"*_daily.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
 
