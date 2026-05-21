@@ -1,0 +1,29 @@
+name: Daily Sync
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '10 5 * * *'  # UTC 05:10 (北京时间 13:10 备用, 主入口是 server cron)
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update index
+        run: |
+          echo "# ALED Daily Scoreboards" > daily/index.md
+          echo "" >> daily/index.md
+          echo "Last updated: $(date -u +%Y-%m-%d)" >> daily/index.md
+          echo "" >> daily/index.md
+          for f in \$(ls -t daily/*_scoreboard.md 2>/dev/null); do
+            date_part=\$(basename "\$f" | sed 's/_scoreboard.md//')
+            echo "- [\$date_part](\$f)" >> daily/index.md
+          done
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "aled: auto index update"
