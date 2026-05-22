@@ -44,10 +44,10 @@ Daily public multi-source signal scan (GitHub Issues, academic papers, job board
 - 30/60/90天预言自动验证
 
 ### 📊 每日报告
- [英文看板](daily/)
- [中文看板](daily/cn/)
- [概念信号量](daily/signal_counts/)
- [原始标题清单](daily/signal_sources/)
+- [英文看板](daily/"点击打开中=英文看板")
+- [中文看板](daily/cn/ "点击打开中文看板")
+- [概念信号量](daily/signal_counts/"点击打开概念信号量")
+- [原始标题清单](daily/signal_sources/"点击打开原始标题清单")
 
 ### 📬 联系方式
 [shenhaiceshi2026@126.com](mailto:shenhaiceshi2026@126.com)
