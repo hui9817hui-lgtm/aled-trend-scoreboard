@@ -6,11 +6,11 @@
 set -e
 cd "$(dirname "$0")"
 
-DOMAIN_SCORE="/root/.openclaw/workspace/projects/domain-score"
+ALED_CORE="/root/.openclaw/workspace/projects/aled-core"
 PUBLIC_REPO_DIR="/root/.openclaw/workspace/projects/aled-trend-scoreboard"
-ALED_OUT="$DOMAIN_SCORE/output/ALED"
-CONTENT_OUT="$DOMAIN_SCORE/output/content"
-VER_OUT="$DOMAIN_SCORE/output/验证"
+ALED_OUT="$ALED_CORE/output/ALED"
+CONTENT_OUT="$ALED_CORE/output/content"
+VER_OUT="$ALED_CORE/output/验证"
 TODAY=$(date +%Y-%m-%d)
 
 # 从外部文件读取 token（不提交到 git）
@@ -35,6 +35,12 @@ cp "$VER_OUT/public/"*.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
 cp "$CONTENT_OUT/en/"*_daily.md "$PUBLIC_REPO_DIR/daily/" 2>/dev/null
 # 中文日报
 cp "$CONTENT_OUT/cn/"*_日报.md "$PUBLIC_REPO_DIR/daily/cn/" 2>/dev/null
+
+# 3b. 信号数据（可验证源）
+mkdir -p "$PUBLIC_REPO_DIR/daily/signal_counts/"
+mkdir -p "$PUBLIC_REPO_DIR/daily/signal_sources/"
+cp "$ALED_CORE/output/public/signal_counts/"*.json "$PUBLIC_REPO_DIR/daily/signal_counts/" 2>/dev/null
+cp "$ALED_CORE/output/public/signal_sources/"*.json "$PUBLIC_REPO_DIR/daily/signal_sources/" 2>/dev/null
 
 # 2. 更新 index.md
 {
