@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALED — Tech Trend Scoreboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 20px;
+    background: #0d1117; color: #e6edf3;
+    line-height: 1.7;
+  }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .lang-toggle {
+    text-align: right; margin-bottom: 24px;
+  }
+  .lang-btn {
+    background: transparent; border: 1px solid #30363d; color: #8b949e;
+    padding: 6px 16px; cursor: pointer; font-size: 14px; border-radius: 6px;
+  }
+  .lang-btn.active { background: #388bfd; color: #fff; border-color: #388bfd; }
+  .lang-btn:first-child { border-radius: 6px 0 0 6px; }
+  .lang-btn:last-child { border-radius: 0 6px 6px 0; margin-left: -1px; }
+
+  .lang-content { display: none; }
+  .lang-content.active { display: block; }
+
+  h1 { font-size: 28px; margin-bottom: 4px; font-weight: 600; }
+  .subtitle { color: #8b949e; font-size: 15px; margin-bottom: 32px; }
+
+  .section { margin-bottom: 28px; }
+  .section h2 {
+    font-size: 18px; font-weight: 600; margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 1px solid #21262d;
+  }
+  .section p { font-size: 15px; color: #c9d1d9; margin-bottom: 8px; }
+  .section ul { padding-left: 20px; }
+  .section li { margin-bottom: 4px; font-size: 14px; color: #c9d1d9; }
+
+  .report-list { margin-top: 8px; }
+  .report-item { display: block; padding: 8px 12px; margin-bottom: 4px;
+    background: #161b22; border-radius: 6px; font-size: 14px;
+    border: 1px solid #21262d;
+  }
+  .report-item:hover { border-color: #30363d; }
+  .report-date { color: #8b949e; font-size: 12px; margin-left: 8px; }
+  .report-icon { margin-right: 6px; }
+
+  .footer { margin-top: 40px; padding-top: 16px;
+    border-top: 1px solid #21262d; font-size: 13px; color: #8b949e; }
+  .badge { display: inline-block; background: #1f6feb20; color: #58a6ff;
+    padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 6px; }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="switchLang('en')" id="btn-en">🇬🇧 English</button>
+  <button class="lang-btn" onclick="switchLang('cn')" id="btn-cn">🇨🇳 中文</button>
+</div>
+
+<div class="lang-content active" id="content-en">
+  <h1>ALED Scoreboard</h1>
+  <p class="subtitle">Abstraction Layer Emergence Detection — multi-source entropy signal system</p>
+
+  <div class="section">
+    <h2>📋 What This Is</h2>
+    <p>Daily scan of public multi-source signals (GitHub Issues, academic papers, job boards, YC RFS, Dev.to, Stack Overflow) → structural entropy scoring → early trend detection.</p>
+    <p>The system is in its <strong>initial data accumulation phase</strong> — daily scoreboards are the primary output while statistical validation accumulates.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔬 Capability</h2>
+    <ul>
+      <li>Detect technology concepts before mainstream adoption</li>
+      <li>Cross-source signal validation</li>
+      <li>Structural entropy measurement (information-theoretic)</li>
+      <li>Automated prediction verification at 30/60/90 day windows</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📊 Daily Reports</h2>
+    <p>Scoreboards published each day at ~06:00 UTC+8.</p>
+    <div class="report-list" id="report-list-en">
+      <div style="color:#8b949e; font-size:13px;">Loading...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔍 Verifiable Signal Data</h2>
+    <p>Raw signal counts and source titles are published daily for independent verification.</p>
+    <ul>
+      <li><a href="daily/signal_counts/">Signal counts per concept</a></li>
+      <li><a href="daily/signal_sources/">Source titles per concept</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📬 Contact</h2>
+    <p><a href="mailto:shenhaiceshi2026@126.com">shenhaiceshi2026@126.com</a></p>
+  </div>
+
+  <div class="footer">
+    <p>Powered by multi-source entropy signals. Non-exclusive buyout licensing.</p>
+  </div>
+</div>
+
+<div class="lang-content" id="content-cn">
+  <h1>ALED 趋势看板</h1>
+  <p class="subtitle">Abstraction Layer Emergence Detection — 多源熵信号趋势检测系统</p>
+
+  <div class="section">
+    <h2>📋 这是什么</h2>
+    <p>每日扫描多源公开信号（GitHub Issues、学术论文、招聘岗位、YC RFS、Dev.to、Stack Overflow）→ 结构熵评分 → 早期趋势检测。</p>
+    <p>目前处于<strong>数据积累初期</strong>，每日产出评分看板，统计验证随数据累积推进。</p>
+  </div>
+
+  <div class="section">
+    <h2>🔬 能力</h2>
+    <ul>
+      <li>在技术概念成为主流前检测到结构变化</li>
+      <li>跨源信号交叉验证</li>
+      <li>基于信息论的结构熵测量</li>
+      <li>30/60/90天预言自动验证</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📊 每日报告</h2>
+    <p>看板每天 ~06:00 (UTC+8) 更新。</p>
+    <div class="report-list" id="report-list-cn">
+      <div style="color:#8b949e; font-size:13px;">加载中...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔍 可验证信号数据</h2>
+    <p>每天同步原始信号计数和标题，可用于独立验证。</p>
+    <ul>
+      <li><a href="daily/signal_counts/">概念信号量计数</a></li>
+      <li><a href="daily/signal_sources/">原始标题清单</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📬 联系方式</h2>
+    <p><a href="mailto:shenhaiceshi2026@126.com">shenhaiceshi2026@126.com</a></p>
+  </div>
+
+  <div class="footer">
+    <p>基于多源熵信号。非独家买断制授权。</p>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.lang-content').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(e => e.classList.remove('active'));
+  document.getElementById('content-' + lang).classList.add('active');
+  document.getElementById('btn-' + lang).classList.add('active');
+  try { localStorage.setItem('aled_lang', lang); } catch(e) {}
+}
+
+// 从 localStorage 恢复语言偏好
+try {
+  const saved = localStorage.getItem('aled_lang');
+  if (saved === 'cn') switchLang('cn');
+} catch(e) {}
+
+// 加载报告列表
+function loadReports() {
+  const url = 'daily/index.md';
+  fetch(url)
+    .then(r => r.text())
+    .then(text => {
+      const links = text.match(/- \[(.*?)\]\((.*?)\)/g) || [];
+      ['en', 'cn'].forEach(lang => {
+        const container = document.getElementById('report-list-' + lang);
+        if (links.length === 0) {
+          container.innerHTML = '<div style="color:#8b949e;font-size:13px;">暂无数据</div>';
+          return;
+        }
+        const html = links.slice(0, 10).map(link => {
+          const m = link.match(/- \[(.*?)\]\((.*?)\)/);
+          if (!m) return '';
+          return '<a class="report-item" href="' + m[2] + '"><span class="report-icon">📋</span>' + m[1] + '</a>';
+        }).join('');
+        container.innerHTML = html;
+      });
+    })
+    .catch(() => {});
+}
+loadReports();
+</script>
+</body>
+</html>
