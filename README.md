@@ -1,16 +1,19 @@
 <div align="center">
 
-<h1 id="title-en" style="margin-bottom:0;">ALED Tech Trend Scoreboard</h1>
-<h1 id="title-cn" style="margin-bottom:0;display:none;">ALED 趋势看板</h1>
-<p id="sub-en" style="color:#656d76;margin-top:4px;">Multi-source entropy signal system — early trend detection</p>
-<p id="sub-cn" style="color:#656d76;margin-top:4px;display:none;">多源熵信号系统 — 早期趋势检测</p>
+<!-- 隐藏的 checkbox: 未勾选=英文，勾选=中文 -->
+<input type="checkbox" id="lang-toggle" style="display:none;">
 
+<!-- 按钮组: 点击 label 切换 checkbox 状态 -->
 <p>
-  <button onclick="switchLang('en')" id="btn-en" style="background:#2da44e;color:#fff;border:none;border-radius:6px;padding:4px 14px;font-size:14px;cursor:pointer;margin:2px;">🇬🇧 English</button>
-  <button onclick="switchLang('cn')" id="btn-cn" style="background:#d0d7de;color:#1f2328;border:none;border-radius:6px;padding:4px 14px;font-size:14px;cursor:pointer;margin:2px;">🇨🇳 中文</button>
+  <label for="lang-toggle" id="btn-en" style="background:#2da44e;color:#fff;border-radius:6px 0 0 6px;padding:4px 14px;font-size:14px;cursor:pointer;user-select:none;display:inline-block;">🇬🇧 English</label>
+  <label for="lang-toggle" id="btn-cn" style="background:#d0d7de;color:#1f2328;border-radius:0 6px 6px 0;padding:4px 14px;font-size:14px;cursor:pointer;user-select:none;display:inline-block;margin-left:-5px;">🇨🇳 中文</label>
 </p>
 
 </div>
+
+<!-- 英文标题 -->
+<h1 id="title-en">ALED Tech Trend Scoreboard</h1>
+<p id="sub-en" style="color:#656d76;">Multi-source entropy signal system — early trend detection</p>
 
 <div id="en-content">
 
@@ -20,7 +23,7 @@ Daily public multi-source signal scan (GitHub Issues, academic papers, job board
 
 ### 🔬 Capabilities
 - Detect technology concepts before mainstream adoption
-- Cross-source signal validation  
+- Cross-source signal validation
 - Information-theoretic structural entropy measurement
 - Automated prediction verification (30/60/90 day windows)
 
@@ -43,7 +46,11 @@ Published each day at ~06:00 UTC+8 in [`daily/`](daily/) directory.
 
 </div>
 
-<div id="cn-content" style="display:none;">
+<!-- 中文内容 -->
+<h1 id="title-cn">ALED 趋势看板</h1>
+<p id="sub-cn" style="color:#656d76;">多源熵信号系统 — 早期趋势检测</p>
+
+<div id="cn-content">
 
 ### 📋 这是什么
 
@@ -74,17 +81,46 @@ Published each day at ~06:00 UTC+8 in [`daily/`](daily/) directory.
 
 </div>
 
-<script>
-function switchLang(lang) {
-  document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';
-  document.getElementById('cn-content').style.display = lang === 'cn' ? 'block' : 'none';
-  document.getElementById('title-en').style.display = lang === 'en' ? 'block' : 'none';
-  document.getElementById('title-cn').style.display = lang === 'cn' ? 'block' : 'none';
-  document.getElementById('sub-en').style.display = lang === 'en' ? 'block' : 'none';
-  document.getElementById('sub-cn').style.display = lang === 'cn' ? 'block' : 'none';
-  document.getElementById('btn-en').style.background = lang === 'en' ? '#2da44e' : '#d0d7de';
-  document.getElementById('btn-cn').style.background = lang === 'cn' ? '#2da44e' : '#d0d7de';
-  document.getElementById('btn-en').style.color = lang === 'en' ? '#fff' : '#1f2328';
-  document.getElementById('btn-cn').style.color = lang === 'cn' ? '#fff' : '#1f2328';
+<style>
+/* 未勾选 → 显示英文，隐藏中文 */
+#lang-toggle:not(:checked) ~ #title-en,
+#lang-toggle:not(:checked) ~ #sub-en,
+#lang-toggle:not(:checked) ~ #en-content {
+  display: block !important;
 }
-</script>
+#lang-toggle:not(:checked) ~ #title-cn,
+#lang-toggle:not(:checked) ~ #sub-cn,
+#lang-toggle:not(:checked) ~ #cn-content {
+  display: none !important;
+}
+
+/* 已勾选 → 显示中文，隐藏英文 */
+#lang-toggle:checked ~ #title-en,
+#lang-toggle:checked ~ #sub-en,
+#lang-toggle:checked ~ #en-content {
+  display: none !important;
+}
+#lang-toggle:checked ~ #title-cn,
+#lang-toggle:checked ~ #sub-cn,
+#lang-toggle:checked ~ #cn-content {
+  display: block !important;
+}
+
+/* 按钮高亮 */
+#lang-toggle:not(:checked) ~ p #btn-en {
+  background: #2da44e !important;
+  color: #fff !important;
+}
+#lang-toggle:not(:checked) ~ p #btn-cn {
+  background: #d0d7de !important;
+  color: #1f2328 !important;
+}
+#lang-toggle:checked ~ p #btn-cn {
+  background: #2da44e !important;
+  color: #fff !important;
+}
+#lang-toggle:checked ~ p #btn-en {
+  background: #d0d7de !important;
+  color: #1f2328 !important;
+}
+</style>
